@@ -201,13 +201,18 @@ Wiedergabe?) ist damit weiterhin offen.
 
 ## Nach dem Merge
 
-- **Lokal** sind die Ordner `ysamjo-youtubetv-patches` und `ysamjo-rtlplus-patches` entfernt
-  (in den Papierkorb, nicht endgültig gelöscht). Vollständige ZIP-Archive **inklusive
-  Git-Historie** liegen unter `~/Developer/Archiv/`:
+- **Lokal** sind die Ordner `ysamjo-youtubetv-patches` und `ysamjo-rtlplus-patches` per Finder in
+  den Papierkorb verschoben worden (der `osascript`-Aufruf meldete Erfolg). Nachprüfen lässt sich
+  das nachträglich nicht mehr: `~/.Trash` ist für den aufrufenden Prozess gesperrt (macOS-TCC,
+  `Operation not permitted`), und auch der Finder verweigert die Abfrage (`-10004`). Ob die
+  Ordner dort noch liegen oder inzwischen von macOS geräumt wurden, ist also **nicht belegt**.
+
+  Darauf kommt es aber nicht an, denn die vollständigen ZIP-Archive **inklusive Git-Historie**
+  liegen unter `~/Developer/Archiv/` und sind verifiziert (`unzip -t` → OK):
 
   ```
-  ~/Developer/Archiv/ysamjo-youtubetv-patches-v1.4.0.zip   (1,2 MB, 117 .git-Einträge)
-  ~/Developer/Archiv/ysamjo-rtlplus-patches-v1.0.0.zip     (376 KB, 215 .git-Einträge)
+  ~/Developer/Archiv/ysamjo-youtubetv-patches-v1.4.0.zip   (1 269 116 B, 117 .git-Einträge)
+  ~/Developer/Archiv/ysamjo-rtlplus-patches-v1.0.0.zip     (384 450 B, 215 .git-Einträge)
   ```
 
   Sie liegen bewusst **außerhalb** des Repos — `git clean -xdf` würde sie innerhalb nicht
