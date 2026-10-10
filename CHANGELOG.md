@@ -1,3 +1,9 @@
+## 1.0.0 (2026-10-10)
+
+### ✨ New Features
+
+* Morphe-Patches für YouTube for Android TV, TizenTube Cobalt und RTL+ in einem Repo ([bb671b1](https://github.com/ysamjo/morphe-patches/commit/bb671b1b197fe021c2708ed498acc38abc9f795d))
+
 # Changelog
 
 Dieses Repo entstand am 2026-10-10 durch Zusammenlegen von `ysamjo-youtubetv-patches`

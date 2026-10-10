@@ -54,7 +54,54 @@ Releases; alle drei Apps erscheinen als eigene Gruppe.
 ## 🩹 Patch-Liste
 
 <!-- PATCHES_START EXPANDED -->
-> _Wird beim ersten Release von `release.yml` erzeugt._
+> **[v1.0.0](https://github.com/ysamjo/morphe-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;5 patches total
+<details open>
+<summary>📦 YouTube for Android TV&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 7.11.300 | 7.25.302 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Cobalt-Start-URL ändern](#cobalt-start-url-ndern) | Schreibt die Meta-Data 'cobalt.APP_URL' in der AndroidManifest.xml um. Sie entscheidet, welche URL die Cobalt-Engine beim Start lädt. Damit lässt sich ein filterndes Frontend ansteuern, das eine veränderte Leanback-Web-App ausliefert und Werbung entfernt, ohne die native Engine anzufassen. Die serienmäßige Startprüfung blockiert fremde URLs nicht. | • Start-URL |
+| [Werbe-Blocker-Userscript einspritzen](#werbe-blocker-userscript-einspritzen) | Spritzt ein JavaScript-Userscript in die Leanback-Web-App ein, die Cobalt von youtube.com/tv lädt — dort liegt die Werbe-Pipeline tatsächlich. Das Skript entfernt Werbeplatzierungen aus den InnerTube-Antworten, bevor die App sie auswertet. Geprüft auf einem Google TV Streamer; die Payload greift nachweislich zu. |  |
+
+</details>
+
+<details open>
+<summary>📦 TizenTube&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.0.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [MOD-Kennzeichnung für Icon und Banner](#mod-kennzeichnung-f-r-icon-und-banner) | Ersetzt Icon und Banner der App durch YouTube-Artwork mit MOD-Aufkleber. Das Icon ist das YouTube-Abspielsymbol mit MOD-Pille, der Banner das normale YouTube-Logo mittig, das TizenTube-Zeichen klein oben rechts und MOD klein oben links. Auf Android TV zeigt der Launcher den Banner, deshalb wird beides getauscht. Nur für TizenTube — die Stock-App behält ihr eigenes Artwork. |  |
+| [Werbe-Blocker-Userscript einspritzen](#werbe-blocker-userscript-einspritzen) | Spritzt ein JavaScript-Userscript in die Leanback-Web-App ein, die Cobalt von youtube.com/tv lädt — dort liegt die Werbe-Pipeline tatsächlich. Das Skript entfernt Werbeplatzierungen aus den InnerTube-Antworten, bevor die App sie auswertet. Geprüft auf einem Google TV Streamer; die Payload greift nachweislich zu. |  |
+
+</details>
+
+<details open>
+<summary>📦 RTL+&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 7.15.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [RTL+ Werbung deaktivieren (Yospace DAI)](#rtl-werbung-deaktivieren-yospace-dai) | Erzwingt die Yospace-DAI-Entscheidung auf false, sodass der saubere, werbefreie Premium-Stream genutzt wird. Für RTL+-Premium-Abonnenten, die trotz Bezahlung Werbung erhalten. |  |
+
+</details>
+
 <!-- PATCHES_END -->
 
 ## 📦 Die gepatchten Apps
