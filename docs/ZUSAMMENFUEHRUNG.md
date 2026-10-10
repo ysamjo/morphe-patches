@@ -213,26 +213,35 @@ Wiedergabe?) ist damit weiterhin offen.
   Sie liegen bewusst **außerhalb** des Repos — `git clean -xdf` würde sie innerhalb nicht
   verschonen.
 
-- **Auf GitHub** sind die Alt-Repos noch vorhanden. Das Löschen scheitert am fehlenden
-  Token-Scope: `gh repo delete` antwortet mit
+- **Auf GitHub** sind die Alt-Repos am 2026-10-10 gelöscht:
+
+  ```
+  ✓ Deleted repository ysamjo/ysamjo-youtubetv-patches
+  ✓ Deleted repository ysamjo/ysamjo-rtlplus-patches
+  ```
+
+  Beide URLs antworten danach mit `HTTP 404`, `gh repo list ysamjo` führt nur noch
+  `morphe-patches`. Damit sind auch die alten Releases und ihre `.mpp`-Assets weg — es gibt
+  jetzt genau eine Quelle. Rückgängig ist das nicht; die ZIP-Archive oben sind die einzige
+  verbliebene Kopie der Historie.
+
+  **Stolperfalle beim Löschen:** `gh repo delete` scheiterte zuerst mit
 
   ```
   HTTP 403: Must have admin rights to Repository.
   This API operation needs the "delete_repo" scope.
   ```
 
-  Das ist kein Rechteproblem am Repo, sondern ein fehlender OAuth-Scope — `delete_repo` ist
-  nicht in den Standard-Scopes enthalten und muss einzeln nachgezogen werden:
+  Das liest sich wie ein Rechteproblem am Repo, ist aber ein fehlender OAuth-Scope —
+  `delete_repo` steckt nicht in den Standard-Scopes und muss einzeln nachgezogen werden:
 
   ```bash
   gh auth refresh -h github.com -s delete_repo
-  gh repo delete ysamjo/ysamjo-youtubetv-patches --yes
-  gh repo delete ysamjo/ysamjo-rtlplus-patches --yes
   ```
 
-  Bis dahin bleiben die alten Releases und ihre `.mpp`-Assets erreichbar. Ein Schaden ist das
-  nicht — nur eine doppelte Quelle.
+  Danach steht der Scope in `gh auth status` und das Löschen geht ohne weiteres Zutun durch.
 
-- **Wer die alte Quelle im Morphe Manager eingetragen hatte, muss sie ersetzen** — sobald die
-  Alt-Repos weg sind, sind ihre URLs tot:
+- **Wer die alte Quelle im Morphe Manager eingetragen hatte, muss sie ersetzen** — die alten
+  URLs sind tot. Die gültige Quelle ist:
+
   `https://morphe.software/add-source?github=ysamjo/morphe-patches`
