@@ -201,10 +201,38 @@ Wiedergabe?) ist damit weiterhin offen.
 
 ## Nach dem Merge
 
-- Die beiden Alt-Repos `ysamjo-youtubetv-patches` und `ysamjo-rtlplus-patches` wurden auf
-  GitHub gelöscht und die lokalen Ordner entfernt.
-- **Wer die alte Quelle im Morphe Manager eingetragen hatte, muss sie ersetzen** — die alten
-  URLs sind tot:
+- **Lokal** sind die Ordner `ysamjo-youtubetv-patches` und `ysamjo-rtlplus-patches` entfernt
+  (in den Papierkorb, nicht endgültig gelöscht). Vollständige ZIP-Archive **inklusive
+  Git-Historie** liegen unter `~/Developer/Archiv/`:
+
+  ```
+  ~/Developer/Archiv/ysamjo-youtubetv-patches-v1.4.0.zip   (1,2 MB, 117 .git-Einträge)
+  ~/Developer/Archiv/ysamjo-rtlplus-patches-v1.0.0.zip     (376 KB, 215 .git-Einträge)
+  ```
+
+  Sie liegen bewusst **außerhalb** des Repos — `git clean -xdf` würde sie innerhalb nicht
+  verschonen.
+
+- **Auf GitHub** sind die Alt-Repos noch vorhanden. Das Löschen scheitert am fehlenden
+  Token-Scope: `gh repo delete` antwortet mit
+
+  ```
+  HTTP 403: Must have admin rights to Repository.
+  This API operation needs the "delete_repo" scope.
+  ```
+
+  Das ist kein Rechteproblem am Repo, sondern ein fehlender OAuth-Scope — `delete_repo` ist
+  nicht in den Standard-Scopes enthalten und muss einzeln nachgezogen werden:
+
+  ```bash
+  gh auth refresh -h github.com -s delete_repo
+  gh repo delete ysamjo/ysamjo-youtubetv-patches --yes
+  gh repo delete ysamjo/ysamjo-rtlplus-patches --yes
+  ```
+
+  Bis dahin bleiben die alten Releases und ihre `.mpp`-Assets erreichbar. Ein Schaden ist das
+  nicht — nur eine doppelte Quelle.
+
+- **Wer die alte Quelle im Morphe Manager eingetragen hatte, muss sie ersetzen** — sobald die
+  Alt-Repos weg sind, sind ihre URLs tot:
   `https://morphe.software/add-source?github=ysamjo/morphe-patches`
-- Die erste Veröffentlichung läuft über den üblichen Weg: Arbeit auf `dev`, Merge nach `main`.
-  Bis dahin existiert kein Release und damit keine ladbare `.mpp`.
