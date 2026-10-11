@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "morphe_patches",
+  "project_id": "5cd003e4-71de-43da-8f53-895ab2886a2d"
+}

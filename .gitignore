@@ -128,3 +128,10 @@ node_modules/
 # Ignore IDEA files
 .idea/
 local.properties
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/proxieddb/
+*.gate.lock*
