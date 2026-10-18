@@ -54,7 +54,7 @@ Releases; alle drei Apps erscheinen als eigene Gruppe.
 ## 🩹 Patch-Liste
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.0.0](https://github.com/ysamjo/morphe-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;5 patches total
+> **[v1.0.1-dev.1](https://github.com/ysamjo/morphe-patches/releases/tag/v1.0.1-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;5 patches total
 <details open>
 <summary>📦 YouTube for Android TV&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>

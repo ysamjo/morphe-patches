@@ -77,6 +77,29 @@ Die Paket-Unterordner unter `app/ysamjo/patches/` sind produktweise geschnitten
   äußert sich als Patch, der nachweislich angewandt wurde und trotzdem nichts tut. Beim
   Debuggen zuerst prüfen, ob die eigenen Marker im gepatchten Dex stehen (`strings`/`grep`
   über die `classes*.dex`).
+- **`console.log` aus dem injizierten Skript landet im Logcat — aber nur bei TizenTube.** Im
+  Stock-YouTube-TV wird die Ausgabe verworfen, in TizenTube als
+  `I/cobalt: [pid:pid:…:INFO:CONSOLE:1] "…"` sichtbar. Das ist der schnellste Diagnosekanal;
+  Zeilen gehen allerdings gelegentlich verloren, also nie aus dem Fehlen einer Zeile auf
+  fehlende Ausführung schließen.
+- **Der Morphe-Signaturschlüssel liegt in `/tmp/morphe-data/morphe.keystore` und ist
+  flüchtig.** Fehlt er, erzeugt Morphe beim nächsten Lauf einen neuen — und ein so gebautes
+  APK lässt sich nicht mehr über eine bestehende Installation updaten
+  (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`). Eine Sicherung liegt unter
+  `~/.config/morphe/morphe.keystore`; vor jedem Patch-Lauf zurückkopieren:
+  `mkdir -p /tmp/morphe-data && cp ~/.config/morphe/morphe.keystore /tmp/morphe-data/`.
+  Ist der alte Schlüssel verloren, hilft nur Deinstallation — und `pm uninstall -k` reicht
+  **nicht**, weil der behaltene Paket-Record die alte Signatur weiter erzwingt. Will man die
+  App-Daten retten: altes APK installieren, per `run-as` (Paket ist `DEBUGGABLE`) ein
+  `tar`-Archiv des Datenverzeichnisses ziehen, vollständig deinstallieren, neues APK
+  installieren, Archiv zurückspielen.
+- **In einem minifizierten Bundle zählt man Aufrufstellen, nicht Literale.** TizenTube schreibt
+  `videoSpeed` sehr wohl — aber über einen generischen Mirror: jeder `setClientSettingEndpoint`
+  wird zu `Ia(clientSettingEnum.item, wert)`, also `configWrite`. Das Literal `videoSpeed`
+  kommt im Bundle 5× vor, nur 2× davon als Read; daraus „niemals geschrieben" zu schließen war
+  falsch. Verlässlich ist nur der Gerätelog: TizenTube loggt bei jedem Write
+  `"Setting key <key> to <wert>"`, und der Wert steht danach in
+  `app_content_shell/content_shell/Local Storage/leveldb/` (per `run-as` lesbar).
 
 ### 2.2 RTL+
 
