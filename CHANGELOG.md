@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/ysamjo/morphe-patches/compare/v1.0.0...v1.0.1) (2026-10-18)
+
+### 🐛 Bug Fixes
+
+* Wiedergabegeschwindigkeit ueber Videowechsel und App-Neustart halten ([6c8144e](https://github.com/ysamjo/morphe-patches/commit/6c8144e374f7d91a500a716701113b31ebf80308))
+
 ## [1.0.1-dev.1](https://github.com/ysamjo/morphe-patches/compare/v1.0.0...v1.0.1-dev.1) (2026-10-18)
 
 ### 🐛 Bug Fixes
