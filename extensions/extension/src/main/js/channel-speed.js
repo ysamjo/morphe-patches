@@ -121,19 +121,8 @@
             writeRate(state);
             log('MANUAL ' + rate);
         }
-        function menuOpen() {
-            var text = doc.body ? doc.body.textContent || '' : '';
-            return /Wiedergabegeschwindigkeit|Playback speed/.test(text) || (text.match(/[0-9]\.[0-9]{1,2}x/g) || []).length >= 4;
-        }
         function onRate(event) {
-            var video = event.currentTarget || event.target, state = stateFor(video), value = validSpeed(video.playbackRate);
-            var info = context(), source = video.currentSrc || video.src || '', id = info.videoId || 'source:' + source;
-            if (state.id !== id) { sync(video, false); return; }
-            if (value !== null && Math.abs(value - state.rate) > 0.00005 && menuOpen()) {
-                state.manual = true; state.rate = state.stepRate = value;
-                log('MENU ' + value);
-            }
-            writeRate(state);
+            sync(event.currentTarget || event.target, false);
         }
         function schedule() {
             if (timer) return;

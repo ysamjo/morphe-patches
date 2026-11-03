@@ -170,3 +170,15 @@ test('Fernbedienung öffnet das Kanalmenü über den nativen Command Executor', 
     env.router.resolveCommand(items(list)[0].compactLinkRenderer.serviceEndpoint);
     assert.equal(env.commands.at(-1).openPopupAction.uniqueId, 'ysamjo-speed-editor');
 });
+
+test('Ein automatischer Reset bei offenem Tempomenü überschreibt keine Auswahl', () => {
+    const env = fixture({ channel: NFL });
+    env.doc.body.textContent = 'Wiedergabegeschwindigkeit';
+    env.video.playbackRate = 1;
+    env.flush();
+    assert.equal(env.video.playbackRate, 1.1);
+    env.nativeSpeed(1.5);
+    env.video.playbackRate = 1;
+    env.flush();
+    assert.equal(env.video.playbackRate, 1.5);
+});
