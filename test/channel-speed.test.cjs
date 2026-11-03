@@ -182,3 +182,12 @@ test('Ein automatischer Reset bei offenem Tempomenü überschreibt keine Auswahl
     env.flush();
     assert.equal(env.video.playbackRate, 1.5);
 });
+
+test('Die native TizenTube-Schrittweite erlaubt auch Tempo unter 0,25×', () => {
+    const env = fixture({ speed: 0.2, channel: 'UC1234567890123456789012' });
+    assert.equal(env.video.playbackRate, 0.2);
+    env.nativeSpeed(0.05);
+    assert.equal(env.video.playbackRate, 0.05);
+    env.next();
+    assert.equal(env.video.playbackRate, 0.2);
+});

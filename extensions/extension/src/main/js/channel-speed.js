@@ -13,7 +13,7 @@
         { id: 'UCK2izXoHvraUFaPMU5B7vMQ', handle: '@primevideosportde', name: 'Prime Video Sport', speed: 1 }
     ];
     function copy(value) { return JSON.parse(JSON.stringify(value)); }
-    function validSpeed(value) { var n = Number(value); return value !== '' && value !== null && isFinite(n) && n >= 0.25 && n <= 5 ? n : null; }
+    function validSpeed(value) { var n = Number(value); return value !== '' && value !== null && isFinite(n) && n >= 0.05 && n <= 5 ? n : null; }
     function format(value) { return String(Math.round(value * 100) / 100).replace('.', ',') + '×'; }
     function channelId(value) { return /^UC[\w-]{22}$/.test(String(value || '')) ? value : ''; }
     function readObject(storage, key) {
@@ -154,8 +154,8 @@
             var value = settings.globalSpeed, found = null, items = [], title = global ? 'Standardtempo' : info.name || info.channelId;
             for (var i = 0; i < settings.channels.length; i++) if (settings.channels[i].id === info.channelId) found = settings.channels[i];
             if (!global) value = found ? found.speed : 1;
-            var values = [0.25, 0.5, 0.75, 1, 1.1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3, 3.5, 4, 4.5, 5];
-            items.push(button('Tempo −0,1', 'Aktuell: ' + format(value), 'YSAMJO_SPEED_SAVE', { info: info, global: global, speed: Math.max(0.25, Math.round((value - 0.1) * 100) / 100) }));
+            var values = [0.05, 0.1, 0.15, 0.2, 0.25, 0.5, 0.75, 1, 1.1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3, 3.5, 4, 4.5, 5];
+            items.push(button('Tempo −0,1', 'Aktuell: ' + format(value), 'YSAMJO_SPEED_SAVE', { info: info, global: global, speed: Math.max(0.05, Math.round((value - 0.1) * 100) / 100) }));
             items.push(button('Tempo +0,1', 'Aktuell: ' + format(value), 'YSAMJO_SPEED_SAVE', { info: info, global: global, speed: Math.min(5, Math.round((value + 0.1) * 100) / 100) }));
             for (var j = 0; j < values.length; j++) items.push(button(format(values[j]), Math.abs(value - values[j]) < 0.00005 ? 'Aktuelle Vorgabe' : '', 'YSAMJO_SPEED_SAVE', { info: info, global: global, speed: values[j] }));
             if (!global && found) items.push(button('Kanalvorgabe entfernen', 'Für diesen Kanal gilt wieder das Standardtempo', 'YSAMJO_SPEED_REMOVE', info));
@@ -262,7 +262,7 @@
             if (!video || ['s', 'd', 'r'].indexOf(key) === -1) return;
             var state = sync(video, false), next;
             if (key === 'r') next = Math.abs(state.rate - 1) < 0.00005 ? state.stepRate : 1;
-            else next = Math.min(5, Math.max(0.25, Math.round((state.stepRate + (key === 'd' ? 0.1 : -0.1)) * 100) / 100));
+            else next = Math.min(5, Math.max(0.05, Math.round((state.stepRate + (key === 'd' ? 0.1 : -0.1)) * 100) / 100));
             var previousStep = state.stepRate; manual(next); if (key === 'r') state.stepRate = previousStep;
             event.preventDefault(); event.stopImmediatePropagation();
         }
