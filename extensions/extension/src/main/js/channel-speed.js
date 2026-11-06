@@ -268,6 +268,7 @@
             wrapped.__ysamjoChannelMetadata = true; root.JSON.parse = wrapped;
         }
         function keydown(event) {
+            if (!/^#\/watch(?:[/?]|$)/.test(root.location.hash || '')) return;
             var target = event.target || {}, tag = String(target.tagName || '').toLowerCase();
             if (['input', 'textarea', 'select'].indexOf(tag) !== -1 || target.isContentEditable || event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) return;
             var key = String(event.key || '').toLowerCase(), video = currentVideo();
