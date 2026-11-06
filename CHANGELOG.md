@@ -1,4 +1,4 @@
-## [1.1.2-dev.1](https://github.com/ysamjo/morphe-patches/compare/v1.1.1...v1.1.2-dev.1) (2026-11-06)
+## [1.1.2](https://github.com/ysamjo/morphe-patches/compare/v1.1.1...v1.1.2) (2026-11-06)
 
 ### 🐛 Bug Fixes
 
