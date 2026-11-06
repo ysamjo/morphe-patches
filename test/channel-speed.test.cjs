@@ -151,6 +151,8 @@ test('Speicherfehler und ungültige Tempowerte verändern Vorgaben nicht', () =>
 });
 test('Eingaben und Fernbedienungs-Navigation werden nicht abgefangen', () => {
     const env = fixture(); for (const [key, extra] of [['d', { target: { tagName: 'INPUT' } }], ['d', { ctrlKey: true }], ['ArrowDown', {}], ['Escape', {}]]) assert.equal(env.key(key, extra).prevented, undefined);
+    env.root.location.hash = '#/search?';
+    for (const key of ['d', 's', 'r']) assert.equal(env.key(key).prevented, undefined);
     assert.equal(env.video.playbackRate, 1);
 });
 test('Später neu gesetzter nativer Router wird wieder eingebunden', () => {
