@@ -256,3 +256,14 @@ test('Fehlende Kanalidentität speichert keine irrtümliche Standardänderung', 
     env.next('normal', NORMAL);
     assert.equal(env.video.playbackRate, 2.5);
 });
+
+
+test('Kids-Auswahl bleibt auch bei ausgeschalteter 1,0×-Vorgabe vorübergehend', () => {
+    const env = fixture({ channel: NORMAL, kids: true, saved: { version: 2, globalSpeed: 1.75, kidsNormalSpeed: false, channels: [] } });
+    env.nativeSpeed(1.25);
+    assert.equal(env.video.playbackRate, 1.25);
+    assert.equal(env.control.getSettings().globalSpeed, 1.75);
+    env.root.location.hostname = 'www.youtube.com';
+    env.next();
+    assert.equal(env.video.playbackRate, 1.75);
+});

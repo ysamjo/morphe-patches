@@ -125,7 +125,7 @@
             if (rate === null) return;
             var state = sync(currentVideo(), false);
             if (!state) return;
-            if (saveDefault && state.policyKey === 'global' && context().channelId && settings.globalSpeed !== rate) {
+            if (saveDefault && !isKids(root) && state.policyKey === 'global' && context().channelId && settings.globalSpeed !== rate) {
                 var next = copy(settings); next.globalSpeed = rate;
                 persist(next);
             }
@@ -171,7 +171,7 @@
             items.push(button('Tempo +0,1', 'Aktuell: ' + format(value), 'YSAMJO_SPEED_SAVE', { info: info, global: global, speed: Math.min(5, Math.round((value + 0.1) * 100) / 100) }));
             for (var j = 0; j < values.length; j++) items.push(button(format(values[j]), Math.abs(value - values[j]) < 0.00005 ? 'Aktuelle Vorgabe' : '', 'YSAMJO_SPEED_SAVE', { info: info, global: global, speed: values[j] }));
             if (!global && found) items.push(button('Kanalvorgabe entfernen', 'Für diesen Kanal gilt wieder das Standardtempo', 'YSAMJO_SPEED_REMOVE', info));
-            send(modal(title, 'Dauerhafte Vorgabe wählen. Die normale Tempoauswahl bleibt temporär.', items, 'ysamjo-speed-editor'));
+            send(modal(title, 'Dauerhafte Vorgabe wählen. Sonderkanäle lassen sich je Video manuell übersteuern.', items, 'ysamjo-speed-editor'));
         }
         function custom(action, args) {
             if (action.indexOf('YSAMJO_SPEED_') !== 0) return false;
