@@ -1,3 +1,9 @@
+## [1.1.2-dev.1](https://github.com/ysamjo/morphe-patches/compare/v1.1.1...v1.1.2-dev.1) (2026-11-06)
+
+### 🐛 Bug Fixes
+
+* Tempo-Tastenkürzel auf die TV-Wiedergabe begrenzen ([b343b60](https://github.com/ysamjo/morphe-patches/commit/b343b60498bf2027d486635c646170a609922a84))
+
 ## [1.1.1](https://github.com/ysamjo/morphe-patches/compare/v1.1.0...v1.1.1) (2026-11-06)
 
 ### 🐛 Bug Fixes
