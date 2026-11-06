@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/ysamjo/morphe-patches/compare/v1.1.0...v1.1.1) (2026-11-06)
+
+### 🐛 Bug Fixes
+
+* Standardtempo vor Änderungen in Kids schützen ([7d02200](https://github.com/ysamjo/morphe-patches/commit/7d02200cbea696d782ff5b19802382d10ef1016f))
+* TV-Standardtempo speichern und RTL Sport mit 1,0× ergänzen ([4ba13fb](https://github.com/ysamjo/morphe-patches/commit/4ba13fb42e072982280b41f4742206b2fadd7d5f))
+
 ## [1.1.1-dev.1](https://github.com/ysamjo/morphe-patches/compare/v1.1.0...v1.1.1-dev.1) (2026-11-06)
 
 ### 🐛 Bug Fixes
