@@ -6,7 +6,7 @@ package app.ysamjo.extension.youtubetv;
  * <p>YouTube TV runs as a leanback web app inside the Cobalt engine. When a user opens a
  * channel, the player inherits the global speed setting set by TizenTube's speed mod
  * ({@code videoSpeed} via {@code setClientSettingEndpoint}). Some channels — notably live
- * sports streams from Sky Sport, DAZN and RTL Sport — must always play at normal speed
+ * sports streams from Sky Sport, DAZN, RTL Sport, NBA and NFL — must always play at normal speed
  * regardless of any global override. This class injects a JavaScript snippet that reads the
  * current channel from the URL and enforces the per-channel speed before the player starts.
  *
@@ -36,10 +36,14 @@ public final class ChannelSpeedPayload {
     private static final String SKY_SPORT_CHANNEL_ID = "REPLACE_WITH_SKY_SPORT_ID";
     private static final String DAZN_CHANNEL_ID = "REPLACE_WITH_DAZN_ID";
     private static final String RTL_SPORT_CHANNEL_ID = "REPLACE_WITH_RTL_SPORT_ID";
+    private static final String NBA_CHANNEL_ID = "REPLACE_WITH_NBA_ID";
+    private static final String NFL_CHANNEL_ID = "REPLACE_WITH_NFL_ID";
 
     private static final float SKY_SPORT_SPEED = 1.0f;
     private static final float DAZN_SPEED = 1.0f;
     private static final float RTL_SPORT_SPEED = 1.0f;
+    private static final float NBA_SPEED = 1.0f;
+    private static final float NFL_SPEED = 1.0f;
 
     /**
      * Injected script that reads the current channel from the URL and calls the speed bridge.
@@ -54,6 +58,8 @@ public final class ChannelSpeedPayload {
             + "r['" + SKY_SPORT_CHANNEL_ID + "']=" + SKY_SPORT_SPEED + ";"
             + "r['" + DAZN_CHANNEL_ID + "']=" + DAZN_SPEED + ";"
             + "r['" + RTL_SPORT_CHANNEL_ID + "']=" + RTL_SPORT_SPEED + ";"
+            + "r['" + NBA_CHANNEL_ID + "']=" + NBA_SPEED + ";"
+            + "r['" + NFL_CHANNEL_ID + "']=" + NFL_SPEED + ";"
             + "window.__ysamjoChannelSpeed=r;"
             + "var m=location.pathname.match(/\\/channel\\/([^/]+)/);"
             + "if(!m) return;"

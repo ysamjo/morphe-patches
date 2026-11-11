@@ -225,8 +225,8 @@ Adblock-Injektor) und injiziert dann das Back-Exit-Skript mit dem Callback-Proxy
 
 **Kanalgeschwindigkeits-Regeln (ergänzend zu Seam 2):** `ChannelSpeedPayload` definiert
 JavaScript, das die Kanal-URL ausliest ({@code /channel/<id>}) und bei einem Match
-{@code setClientSettingEndpoint('videoSpeed', 1.0)} aufruft. Platzhalter-IDs müssen nach dem
-ersten Lauf ersetzt werden:
+{@code setClientSettingEndpoint('videoSpeed', 1.0)} aufruft. Geregelt sind Sky Sport,
+DAZN, RTL Sport, NBA und NFL. Platzhalter-IDs müssen nach dem ersten Lauf ersetzt werden:
 
 ```
 adb logcat -s ysamjo-tv-adblock | grep channel
