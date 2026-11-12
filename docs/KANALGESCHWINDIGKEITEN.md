@@ -9,3 +9,5 @@ Auf Kanälen ohne Sonderregel speichert die normale Tempoauswahl im Player das S
 Beim Update wird RTL Sport einmalig zu bestehenden Regeln hinzugefügt. Unveränderte Altinstallationen übernehmen zusätzlich den erweiterten Sport-Kanalsatz. Selbst angelegte oder geänderte Regeln bleiben unangetastet. Ein zuvor in der Kanalverwaltung festgelegtes Standardtempo bleibt erhalten. Stand dort noch der anfängliche Wert 1,0×, übernimmt das Update die zuletzt im normalen TV-Tempomenü gespeicherte Auswahl.
 
 Der Patch unterstützt die offizielle ARM-Ausgabe von [TizenTube Cobalt 2.0.3](https://github.com/reisxd/TizenTubeCobalt/releases/tag/v2.0.3).
+
+Der Kanalsatz wird mit der Chrome-Erweiterung geteilt: `../video-speed-control-chrome/channels.json` ist der kanonische Katalog, `test/channel-catalog.test.cjs` gleicht `DEFAULT_CHANNELS` dagegen ab. In einem alleinigen Morphe-Checkout ohne Nachbar-Repo wird dieser Abgleich übersprungen.

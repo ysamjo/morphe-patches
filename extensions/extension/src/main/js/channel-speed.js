@@ -349,5 +349,5 @@
         return { sync: sync, manual: manual, inspectCommand: inspectCommand, captureMetadata: captureMetadata, context: context,
             showRules: showRules, getSettings: function () { return copy(settings); } };
     }
-    return { install: install, readSettings: readSettings, preset: preset, modal: modal, button: button, validSpeed: validSpeed, key: KEY };
+    return { install: install, readSettings: readSettings, preset: preset, modal: modal, button: button, validSpeed: validSpeed, key: KEY, defaultChannels: copy(DEFAULT_CHANNELS) };
 }));
