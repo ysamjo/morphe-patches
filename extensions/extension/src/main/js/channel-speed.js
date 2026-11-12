@@ -6,30 +6,58 @@
 }(typeof window !== 'undefined' ? window : null, function () {
     'use strict';
     var KEY = 'ysamjo-tv-channel-speeds';
-    var SETTINGS_VERSION = 3;
+    var SETTINGS_VERSION = 4;
     var RTL_SPORT = { id: 'UC8WYi3XQXsf-6FNvqoEvxag', handle: '@RTLSport', name: 'RTL Sport', speed: 1 };
     var DEFAULT_CHANNELS = [
         { id: 'UCE0RhriywrL8XhXbo87tMKQ', handle: '@sportstudio', name: 'sportstudio', speed: 1 },
+        { id: 'UCRFsyeKu07-LnHDG44O6uCA', handle: '@sportschau', name: 'Sportschau', speed: 1 },
         { id: 'UCAvNr5DMVncoJnJAotXOjOQ', handle: '@skysport', name: 'Sky Sport', speed: 1 },
         { id: 'UCuOwl-VgqBHOzR8hWnonBcA', handle: '@skysportde', name: 'Sky Sport DE', speed: 1 },
+        { id: 'UC5dCegXiWjE57wKrhWnCo0g', handle: '@skysportaustria', name: 'Sky Sport Austria', speed: 1 },
+        { id: 'UC1a3OGagvVFWPK1NAI0PcMQ', handle: '@skysportnewshd', name: 'Sky Sport News', speed: 1 },
         { id: 'UCdi3n18zcIZeTk_x9qvSgZw', handle: '@dazn', name: 'DAZN', speed: 1 },
         { id: 'UC-XArLCeEw91r9gmaDi-Ajw', handle: '@daznde', name: 'DAZN DE', speed: 1 },
         RTL_SPORT,
+        { id: 'UCK2izXoHvraUFaPMU5B7vMQ', handle: '@primevideosportde', name: 'Prime Video Sport', speed: 1 },
+        { id: 'UCk452F_ypT9Q8b1S38-Ok8A', handle: '@eurosportdeutschland', name: 'Eurosport Deutschland', speed: 1 },
+        { id: 'UCPj_Vtw0hKnhJapQuATBUrA', handle: '@sport1', name: 'SPORT1', speed: 1 },
+        { id: 'UCiMAc_TN1kSO3ErMtxUXfMA', handle: '@ransport', name: 'ran', speed: 1 },
+        { id: 'UCQEHrmmI8kKJ6kAiQdQUjgg', handle: '@kicker', name: 'kicker', speed: 1 },
+        { id: 'UChr7ZXDFiPOEl543HM4Aj8g', handle: '@magentasport', name: 'Magenta Sport', speed: 1 },
         { id: 'UCDVYQ4Zhbm3S2dlz7P1GBDg', handle: '@nfl', name: 'NFL', speed: 1 },
-        { id: 'UCWJ2lWNubArHWmf3FIHbfcQ', handle: '@nba', name: 'NBA', speed: 1 }
+        { id: 'UCWJ2lWNubArHWmf3FIHbfcQ', handle: '@nba', name: 'NBA', speed: 1 },
+        { id: 'UC8pYaQzbBBXg9GIOHRvTmDQ', handle: '@motogp', name: 'MotoGP', speed: 1 },
+        { id: 'UCB_qr75-ydFVKSF9Dmo6izg', handle: '@formula1', name: 'Formula 1', speed: 1 },
+        { id: 'UC6UL29enLNe4mqwTfAyeNuw', handle: '@bundesliga', name: 'Bundesliga', speed: 1 },
+        { id: 'UCfMo0xj-sbdzHuzxvKdu1hw', handle: '@dfb', name: 'DFB', speed: 1 },
+        { id: 'UCyGa1YEx9ST66rYrJTGIKOw', handle: '@uefa', name: 'UEFA', speed: 1 }
     ];
     function copy(value) { return JSON.parse(JSON.stringify(value)); }
-    // Regelsatz, den unveränderte Installationen bis Version 2 gespeichert hatten.
-    var LEGACY_CHANNELS = [
-        { id: 'UCE0RhriywrL8XhXbo87tMKQ', speed: 1 },
-        { id: 'UCRFsyeKu07-LnHDG44O6uCA', speed: 1 },
-        { id: 'UCDVYQ4Zhbm3S2dlz7P1GBDg', speed: 1.1 },
-        { id: 'UCK2izXoHvraUFaPMU5B7vMQ', speed: 1 },
-        { id: RTL_SPORT.id, speed: 1 }
+    // Regelsätze, die unveränderte Installationen bis Version 3 gespeichert hatten.
+    var LEGACY_CHANNEL_SETS = [
+        [
+            { id: 'UCE0RhriywrL8XhXbo87tMKQ', speed: 1 },
+            { id: 'UCRFsyeKu07-LnHDG44O6uCA', speed: 1 },
+            { id: 'UCDVYQ4Zhbm3S2dlz7P1GBDg', speed: 1.1 },
+            { id: 'UCK2izXoHvraUFaPMU5B7vMQ', speed: 1 },
+            { id: RTL_SPORT.id, speed: 1 }
+        ],
+        [
+            { id: 'UCE0RhriywrL8XhXbo87tMKQ', speed: 1 },
+            { id: 'UCAvNr5DMVncoJnJAotXOjOQ', speed: 1 },
+            { id: 'UCuOwl-VgqBHOzR8hWnonBcA', speed: 1 },
+            { id: 'UCdi3n18zcIZeTk_x9qvSgZw', speed: 1 },
+            { id: 'UC-XArLCeEw91r9gmaDi-Ajw', speed: 1 },
+            { id: RTL_SPORT.id, speed: 1 },
+            { id: 'UCDVYQ4Zhbm3S2dlz7P1GBDg', speed: 1 },
+            { id: 'UCWJ2lWNubArHWmf3FIHbfcQ', speed: 1 }
+        ]
     ];
     function isLegacyDefault(channels) {
-        return channels.length === LEGACY_CHANNELS.length && LEGACY_CHANNELS.every(function (legacy) {
-            return channels.some(function (rule) { return rule.id === legacy.id && Math.abs(rule.speed - legacy.speed) <= 0.00005; });
+        return LEGACY_CHANNEL_SETS.some(function (set) {
+            return channels.length === set.length && set.every(function (legacy) {
+                return channels.some(function (rule) { return rule.id === legacy.id && Math.abs(rule.speed - legacy.speed) <= 0.00005; });
+            });
         });
     }
     function validSpeed(value) { var n = Number(value); return value !== '' && value !== null && isFinite(n) && n >= 0.05 && n <= 5 ? n : null; }
@@ -51,8 +79,8 @@
             // Version 1 froze the initial 1× default while the native menu saved later choices separately.
             if (globalSpeed === 1 && validSpeed(nativeConfig.videoSpeed) !== null) globalSpeed = Number(nativeConfig.videoSpeed);
         }
-        // Unveränderte Altinstallationen erhalten den neuen Sport-Kanalsatz; eigene Regeln bleiben unangetastet.
-        if (saved && version < 3 && isLegacyDefault(channels)) channels = copy(DEFAULT_CHANNELS);
+        // Unveränderte Altinstallationen erhalten den erweiterten Sport-Kanalsatz; eigene Regeln bleiben unangetastet.
+        if (saved && version < 4 && isLegacyDefault(channels)) channels = copy(DEFAULT_CHANNELS);
         return { version: SETTINGS_VERSION, globalSpeed: globalSpeed, kidsNormalSpeed: !saved || saved.kidsNormalSpeed !== false, channels: channels };
     }
 
