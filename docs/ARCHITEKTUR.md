@@ -226,7 +226,7 @@ Adblock-Injektor) und injiziert dann das Back-Exit-Skript mit dem Callback-Proxy
 **Kanalgeschwindigkeits-Regeln (ergänzend zu Seam 2):** `ChannelSpeedPayload` definiert
 JavaScript, das die Kanal-URL ausliest ({@code /channel/<id>}) und bei einem Match
 {@code setClientSettingEndpoint('videoSpeed', 1.0)} aufruft. Geregelt sind die Sportkanäle
-sportstudio, Sportschau, Sky Sport (DE, Austria, News), DAZN (DE), RTL Sport, Prime Video
+sportstudio, Sportschau, Sky Sport (DE, Austria), DAZN (DE), RTL Sport, Prime Video
 Sport, Eurosport Deutschland, SPORT1, ran, kicker, Magenta Sport, NFL, NBA, MotoGP, Formula 1,
 Bundesliga, DFB und UEFA — jeweils 1,0×:
 

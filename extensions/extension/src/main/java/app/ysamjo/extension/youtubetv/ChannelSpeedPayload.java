@@ -31,7 +31,6 @@ public final class ChannelSpeedPayload {
     private static final String SKY_SPORT_CHANNEL_ID = "UCAvNr5DMVncoJnJAotXOjOQ";
     private static final String SKY_SPORT_DE_CHANNEL_ID = "UCuOwl-VgqBHOzR8hWnonBcA";
     private static final String SKY_SPORT_AUSTRIA_CHANNEL_ID = "UC5dCegXiWjE57wKrhWnCo0g";
-    private static final String SKY_SPORT_NEWS_CHANNEL_ID = "UC1a3OGagvVFWPK1NAI0PcMQ";
     private static final String DAZN_CHANNEL_ID = "UCdi3n18zcIZeTk_x9qvSgZw";
     private static final String DAZN_DE_CHANNEL_ID = "UC-XArLCeEw91r9gmaDi-Ajw";
     private static final String RTL_SPORT_CHANNEL_ID = "UC8WYi3XQXsf-6FNvqoEvxag";
@@ -54,7 +53,6 @@ public final class ChannelSpeedPayload {
     private static final float SKY_SPORT_SPEED = 1.0f;
     private static final float SKY_SPORT_DE_SPEED = 1.0f;
     private static final float SKY_SPORT_AUSTRIA_SPEED = 1.0f;
-    private static final float SKY_SPORT_NEWS_SPEED = 1.0f;
     private static final float DAZN_SPEED = 1.0f;
     private static final float DAZN_DE_SPEED = 1.0f;
     private static final float RTL_SPORT_SPEED = 1.0f;
@@ -87,7 +85,6 @@ public final class ChannelSpeedPayload {
             + "r['" + SKY_SPORT_CHANNEL_ID + "']=" + SKY_SPORT_SPEED + ";"
             + "r['" + SKY_SPORT_DE_CHANNEL_ID + "']=" + SKY_SPORT_DE_SPEED + ";"
             + "r['" + SKY_SPORT_AUSTRIA_CHANNEL_ID + "']=" + SKY_SPORT_AUSTRIA_SPEED + ";"
-            + "r['" + SKY_SPORT_NEWS_CHANNEL_ID + "']=" + SKY_SPORT_NEWS_SPEED + ";"
             + "r['" + DAZN_CHANNEL_ID + "']=" + DAZN_SPEED + ";"
             + "r['" + DAZN_DE_CHANNEL_ID + "']=" + DAZN_DE_SPEED + ";"
             + "r['" + RTL_SPORT_CHANNEL_ID + "']=" + RTL_SPORT_SPEED + ";"
